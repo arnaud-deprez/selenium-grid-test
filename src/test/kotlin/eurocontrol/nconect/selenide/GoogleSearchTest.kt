@@ -1,6 +1,7 @@
 package eurocontrol.nconect.selenide
 
 import com.codeborne.selenide.CollectionCondition.size
+import com.codeborne.selenide.CollectionCondition.sizeGreaterThan
 import com.codeborne.selenide.Condition.text
 import com.codeborne.selenide.Configuration
 import org.openqa.selenium.By
@@ -34,8 +35,9 @@ class GoogleSearchTest {
     companion object {
         @BeforeClass @JvmStatic
         fun setUpClass() {
-//            System.setProperty("selenide.browser", "chrome")
-            System.setProperty("remote", "http://selenium-hub-cicd.192.168.64.25.nip.io/wd/hub")
+//            Configuration.browser = "firefox"
+//            Configuration.browserVersion = "52.7.2"
+//            System.setProperty("remote", "http://zalenium-nes-dev-cicd.dev.nes.nm.eurocontrol.int/wd/hub")
         }
     }
 
@@ -47,7 +49,7 @@ class GoogleSearchTest {
     fun `user can search`() {
         val page = open("https://google.com/ncr", GooglePage::class.java)
         val results = page.searchFor("selenide")
-        results.results.shouldHave(size(10))
+        results.results.shouldHave(sizeGreaterThan(10))
         results.getResult(0).shouldHave(text("Selenide: concise UI tests in Java"))
     }
 }
