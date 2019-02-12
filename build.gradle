@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-group 'eurocontrol.nconect'
+group 'com.powple'
 version '1.0.0-SNAPSHOT'
 
 apply plugin: 'java'
