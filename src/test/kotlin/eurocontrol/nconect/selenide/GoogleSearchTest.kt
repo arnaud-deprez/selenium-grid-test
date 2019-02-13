@@ -13,6 +13,7 @@ import org.junit.BeforeClass
 import org.junit.Test
 import com.codeborne.selenide.junit.ScreenShooter.failedTests
 import org.junit.Rule
+import org.openqa.selenium.remote.DesiredCapabilities
 
 
 class SearchResultsPage {
@@ -35,9 +36,9 @@ class GoogleSearchTest {
     companion object {
         @BeforeClass @JvmStatic
         fun setUpClass() {
-//            Configuration.browser = "firefox"
-//            Configuration.browserVersion = "52.7.2"
-//            System.setProperty("remote", "http://zalenium-nes-dev-cicd.dev.nes.nm.eurocontrol.int/wd/hub")
+            System.setProperty("selenide.browser", "chrome") // or firefox
+            System.setProperty("capabilities.name", "GoogleSearch systemTest")
+//            System.setProperty("selenide.remote", "http://192.168.64.99:31699/wd/hub")
         }
     }
 
